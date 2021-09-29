@@ -22,7 +22,7 @@ if (arg2.length > 0) {
 	if (arg1IsRemote && arg2.includes('ftps://')) {
 		console.log('Error: both arguments are URLs')
 		return
-	} else if (!arg1IsRemote && !arg1.includes('ftps://')) {
+	} else if (!arg1IsRemote && !arg2.includes('ftps://')) {
 		console.log('Error: both arguments are local file paths')
 		return
 	}
