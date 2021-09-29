@@ -1,6 +1,7 @@
 const net = require('net')
 const tls = require('tls')
 const fs = require('fs')
+const URL = require('url').URL
 
 const DEFAULT_PORT = 21
 const DEFAULT_USERNAME = 'anonymous'
