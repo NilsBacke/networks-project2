@@ -104,6 +104,7 @@ const run = (command, arg1, arg2, arg1IsRemote, callback) => {
 		if (parseResponseCode(data.toString()).startsWith('4') || parseResponseCode(data.toString()).startsWith('5')) {
 			console.log(data.toString())
 			dataChannelClient && dataChannelClient.destroy()
+			client.write(`QUIT\r\n`)
 			client.destroy()
 		}
 
@@ -122,6 +123,7 @@ const run = (command, arg1, arg2, arg1IsRemote, callback) => {
 			}
 			callback && callback()
 			dataChannelClient && dataChannelClient.destroy()
+			client.write(`QUIT\r\n`)
 			client.destroy()
 		}
 
@@ -194,14 +196,12 @@ const run = (command, arg1, arg2, arg1IsRemote, callback) => {
 			client.write(`STRU F\r\n`)
 		})
 		client.on('data', onData)
-		client.on('close', () => {})
 	}
 
 	// examples used from https://www.tutorialspoint.com/nodejs/nodejs_net_module.htm
 	let client = new net.Socket()
 	client.connect(port, host)
 	client.on('data', onData)
-	client.on('close', () => {})
 }
 
 module.exports = run
