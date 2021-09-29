@@ -194,14 +194,14 @@ const run = (command, arg1, arg2, arg1IsRemote, callback) => {
 			client.write(`STRU F\r\n`)
 		})
 		client.on('data', onData)
-		client.on('close', () => client.write(`QUIT\r\n`))
+		client.on('close', () => {})
 	}
 
 	// examples used from https://www.tutorialspoint.com/nodejs/nodejs_net_module.htm
 	let client = new net.Socket()
 	client.connect(port, host)
 	client.on('data', onData)
-	client.on('close', () => client.write(`QUIT\r\n`))
+	client.on('close', () => {})
 }
 
 module.exports = run
